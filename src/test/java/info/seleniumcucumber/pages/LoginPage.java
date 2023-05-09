@@ -1,20 +1,25 @@
 package info.seleniumcucumber.pages;
 
+import info.seleniumcucumber.utils.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.util.Properties;
+
 public class LoginPage {
 
     private WebDriver driver;
+    ConfigReader configReader = new ConfigReader();
+    Properties prop = configReader.init_prop();
 
     // 1. By Locators: OR
-    private By emailId = By.name("username");
-    private By password = By.name("password");
-    private By signInButton = By.xpath("//button[@type='submit']");
-    private By forgotPwdLink = By.xpath("//div[@class='orangehrm-login-forgot']/p");
+    private By emailId = By.name(prop.getProperty("userid"));
+    private By password = By.name(prop.getProperty("password"));
+    private By signInButton = By.xpath(prop.getProperty("signInButton"));
+    private By forgotPwdLink = By.xpath(prop.getProperty("forgotPwdLink"));
 
     // 2. Constructor of the page class:
     public LoginPage(WebDriver driver) {

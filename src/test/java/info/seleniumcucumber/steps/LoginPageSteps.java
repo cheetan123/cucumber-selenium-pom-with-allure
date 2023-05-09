@@ -2,21 +2,26 @@ package info.seleniumcucumber.steps;
 
 import info.seleniumcucumber.factory.DriverFactory;
 import info.seleniumcucumber.pages.LoginPage;
+import info.seleniumcucumber.utils.ConfigReader;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.util.Properties;
+
 public class LoginPageSteps {
 
 	private static String title;
 	private LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
+	ConfigReader configReader = new ConfigReader();
+	Properties prop = configReader.init_prop();
 
 	@Given("user is on login page")
 	public void user_is_on_login_page() {
 
 		DriverFactory.getDriver()
-				.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+				.get(prop.getProperty("url"));
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {

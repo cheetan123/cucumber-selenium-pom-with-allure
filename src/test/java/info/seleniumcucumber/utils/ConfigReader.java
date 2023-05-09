@@ -17,8 +17,11 @@ public class ConfigReader {
 
 		prop = new Properties();
 		try {
-			FileInputStream ip = new FileInputStream("./src/test/resources/configs/config.properties");
-			prop.load(ip);
+			FileInputStream ipConfig = new FileInputStream("./src/test/resources/configs/config.properties");
+			prop.load(ipConfig);
+
+			FileInputStream ipLogin = new FileInputStream("./src/test/resources/configs/login.properties");
+			prop.load(ipLogin);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
