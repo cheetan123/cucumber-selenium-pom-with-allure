@@ -1,7 +1,4 @@
-target/
 .idea
 *.iml
 errorShots
 screenShots
-.allure
-allure-results/
